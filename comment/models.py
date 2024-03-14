@@ -3,6 +3,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.html import format_html
+import uuid
 
 from comment.managers import CommentQuerySet, ReactionQuerySet
 
@@ -53,7 +54,7 @@ class Comment(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    object_id = models.UUIDField(default=uuid.uuid4, editable=False)  # Change to UUIDField
     content_object = GenericForeignKey('content_type', 'object_id')
 
     objects = CommentQuerySet.as_manager()
