@@ -1,11 +1,11 @@
 {% load static %}
 
-{% if offline_imports %}
+{% comment %} {% if offline_imports %} {% endcomment %}
     {# load from source #}
-    <link rel="stylesheet" href="{% static 'comment/css/comment.min.css' %}">
-{% else %}
+    {% comment %} <link rel="stylesheet" href="{% static 'comment/css/comment.min.css' %}"> {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
     {# load from url #}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{% static 'comment/tailwindcss/tailwind.config.js' %}"></script>
     <link rel="stylesheet" href="{% static 'comment/tailwindcss/style.css' %}">
-{% endif %}
+{% comment %} {% endif %} {% endcomment %}
